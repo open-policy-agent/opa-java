@@ -36,8 +36,8 @@ java:
   companyURL: www.styra.com
   defaultErrorName: SDKError
   flattenGlobalSecurity: false
-  githubURL: github.com/styrainc/opa-java
-  groupID: com.styra.opa
+  githubURL: github.com/open-policy-agent/opa-java
+  groupID: org.openpolicyagent.opa
   imports:
     option: openapi
     paths:

@@ -1,6 +1,6 @@
 # CompileOptions
 
-Additional options to use during partial evaluation. Only the disableInlining option is currently supported in OPA. Enterprise OPA may support additional options.
+Additional options to use during partial evaluation. Only the disableInlining option is currently supported in OPA. EOPA may support additional options.
 
 
 ## Fields

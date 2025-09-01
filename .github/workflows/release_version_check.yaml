@@ -28,7 +28,7 @@ jobs:
           token: ${{ secrets.github_access_token }}
           notify_when: "failure"
           notification_title: "Maven Central release for opa-java does not match GitHub release version"
-          message_format: "{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>, see release docs here: https://styrainc.github.io/opa-java/maintenance/releases/"
+          message_format: "{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>, see release docs here: https://open-policy-agent.github.io/opa-java/maintenance/releases/"
           footer: "Linked Repo <{repo_url}|{repo}> | <{run_url}|View Run>"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

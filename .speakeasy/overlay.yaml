@@ -7,6 +7,6 @@ actions:
     description: |
       Support path encoding
       https://www.speakeasy.com/docs/languages/java/param-encoding#allowreserved. 
-      Fix https://github.com/StyraInc/opa-java/issues/77
+      Fix https://github.com/open-policy-agent/opa-java/issues/77
     update:
       x-speakeasy-param-encoding-override: allowReserved

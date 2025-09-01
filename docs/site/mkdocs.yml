@@ -1,15 +1,15 @@
 site_name: OPA-Java SDK Documentation
-site_url: "https://styrainc.github.io/opa-java/"
+site_url: "https://open-policy-agent.github.io/opa-java/"
 markdown_extensions:
   - admonition
 nav:
-  - 'Home': "index.md"
-  - 'GitHub': "https://github.com/StyraInc/opa-java"
-  - 'Other Styra OPA SDKs': "https://docs.styra.com/sdk"
-  - 'Javadoc': "javadoc"
-  - 'Maintenance':
-    - "Add a Documentation Page": "maintenance/add-doc.md"
-    - "Modify Styra-Managed Code": "maintenance/change-managed.md"
-    - "Regenerate Speakeasy-Managed Code": "maintenance/change-speakeasy.md"
-    - "Release": "maintenance/releases.md"
-    - "Using a Custom OpenAPI Spec": "maintenance/custom-spec.md"
+  - "Home": "index.md"
+  - "GitHub": "https://github.com/open-policy-agent/opa-java"
+  - "Other Java OPA SDKs": "https://github.com/open-policy-agent/opa-java/tree/main/docs"
+  - "Javadoc": "javadoc"
+  - "Maintenance":
+      - "Add a Documentation Page": "maintenance/add-doc.md"
+      - "Modify Human-Managed Code": "maintenance/change-managed.md"
+      - "Regenerate Speakeasy-Managed Code": "maintenance/change-speakeasy.md"
+      - "Release": "maintenance/releases.md"
+      - "Using a Custom OpenAPI Spec": "maintenance/custom-spec.md"

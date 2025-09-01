@@ -217,7 +217,7 @@ Based on:
 ## 2024-05-09 00:19:22
 ### Changes
 High-level API changes:
-* `java.lang.Object` values are now supported as inputs and outputs ([#43](https://github.com/StyraInc/opa-java/pull/43))
+* `java.lang.Object` values are now supported as inputs and outputs ([#43](https://github.com/open-policy-agent/opa-java/pull/43))
 
 Based on:
 - OpenAPI Doc  

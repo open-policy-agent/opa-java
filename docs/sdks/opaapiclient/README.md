@@ -2,8 +2,8 @@
 
 ## Overview
 
-Enterprise OPA documentation
-<https://docs.styra.com/enterprise-opa>
+EOPA documentation
+<https://github.com/open-policy-agent/eopa/tree/main/docs>
 
 ### Available Operations
 
@@ -23,11 +23,11 @@ Execute the default decision  given an input
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.errors.ServerError;
-import com.styra.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
-import com.styra.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.errors.ServerError;
+import org.openpolicyagent.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -77,11 +77,11 @@ Execute a policy
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.errors.ServerError;
-import com.styra.opa.openapi.models.operations.ExecutePolicyRequest;
-import com.styra.opa.openapi.models.operations.ExecutePolicyResponse;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.errors.ServerError;
+import org.openpolicyagent.opa.openapi.models.operations.ExecutePolicyRequest;
+import org.openpolicyagent.opa.openapi.models.operations.ExecutePolicyResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -133,11 +133,11 @@ Execute a policy given an input
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.errors.ServerError;
-import com.styra.opa.openapi.models.operations.*;
-import com.styra.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.errors.ServerError;
+import org.openpolicyagent.opa.openapi.models.operations.*;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -192,11 +192,11 @@ Execute a policy given a batch of inputs
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.BatchServerError;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.operations.*;
-import com.styra.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.BatchServerError;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.operations.*;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 import java.util.Map;
 
@@ -253,11 +253,11 @@ Partially evaluate a query
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.errors.ServerError;
-import com.styra.opa.openapi.models.operations.*;
-import com.styra.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.errors.ServerError;
+import org.openpolicyagent.opa.openapi.models.operations.*;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 import java.util.List;
 
@@ -313,9 +313,9 @@ The health API endpoint executes a simple built-in policy query to verify that t
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.UnhealthyServer;
-import com.styra.opa.openapi.models.operations.HealthResponse;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.UnhealthyServer;
+import org.openpolicyagent.opa.openapi.models.operations.HealthResponse;
 import java.lang.Exception;
 
 public class Application {

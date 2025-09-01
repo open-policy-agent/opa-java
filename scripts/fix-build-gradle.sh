@@ -83,10 +83,10 @@ ensure_plugin() {
 ensure_plugin 'id "nebula.lint".*' 'id "nebula.lint" version "17.8.0"' './build.gradle'
 
 # Rewrite the artifact and group ID to be one level "up", so we publish
-# com.styra.opa rather than com.styra.opa.openapi.
-"$SED" 's#into("META-INF/maven/com.styra.opa/openapi")#into("META-INF/maven/com.styra/opa")#g' < build.gradle | \
-	"$SED" 's#group = "com.styra.opa"#group = "com.styra"#g' | \
-	"$SED" 's#groupId = "com.styra.opa"#groupId = "com.styra"#g' | \
+# org.openpolicyagent.opa rather than org.openpolicyagent.opa.openapi.
+"$SED" 's#into("META-INF/maven/org.openpolicyagent.opa/openapi")#into("META-INF/maven/org.openpolicyagent.opa/opa")#g' < build.gradle | \
+	"$SED" 's#group = "org.openpolicyagent.opa"#group = "org.openpolicyagent.opa"#g' | \
+	"$SED" 's#groupId = "org.openpolicyagent.opa"#groupId = "org.openpolicyagent.opa"#g' | \
 	"$SED" 's#artifactId = "openapi"#artifactId = "opa"#g' | \
 	"$SED" 's#archiveBaseName = "openapi"#archiveBaseName = "opa"#g' | \
 	"$SED" 's#libs/openapi-#libs/opa-#g' > build.gradle.tmp
@@ -101,7 +101,7 @@ mv build.gradle.tmp build.gradle
 "$SED" -i "s/rootProject[.]name = 'openapi'/rootProject.name = 'opa'/g" ./settings.gradle
 
 # Update gradle.properties to set the groupId and artifactId
-"$SED" -i "s/groupId=com.styra.opa/groupId=com.styra/g" ./gradle.properties
+"$SED" -i "s/groupId=org.openpolicyagent.opa/groupId=org.openpolicyagent.opa/g" ./gradle.properties
 "$SED" -i "s/artifactId=openapi/artifactId=opa/g" ./gradle.properties
 
 
@@ -120,9 +120,9 @@ groupartifactlint() {
 }
 
 set +x
-groupartifactlint 'com[.]styra[.]opa[.]openapi'
+groupartifactlint 'org[.]openpolicyagent[.]opa[.]openapi'
 groupartifactlint 'opa[.]openapi'
-groupartifactlint 'com[.]styra[.]opa/openapi'
+groupartifactlint 'org[.]openpolicyagent[.]opa/openapi'
 
 if grep -q 'rootProject[.]name.*openapi' < settings.gradle ; then
 	echo "WARNING: possible incorrect root project name in settings.gradle after running '$0'" 1>&2

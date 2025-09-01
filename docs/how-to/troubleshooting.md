@@ -17,15 +17,15 @@ If the SDK is unable to connect to OPA properly, you may see exceptions similar 
 java.net.ConnectException
       at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:846)
       at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:123)
-      at com.styra.opa.openapi.utils.SpeakeasyHTTPClient.send(SpeakeasyHTTPClient.java:20)
-      at com.styra.opa.openapi.OpaApiClient.executePolicyWithInput(OpaApiClient.java:508)
-      at com.styra.opa.openapi.models.operations.ExecutePolicyWithInputRequestBuilder.call(ExecutePolicyWithInputRequestBuilder.java:37)
-      at com.styra.opa.OPAClient.executePolicy(OPAClient.java:536)
-      at com.styra.opa.OPAClient.evaluateMachinery(OPAClient.java:638)
-      at com.styra.opa.OPAClient.evaluate(OPAClient.java:421)
-      at com.styra.opa.OPAClient.check(OPAClient.java:119)
-      at com.styra.tickethub.TicketHub.authz(TicketHub.java:207)
-      at com.styra.tickethub.TicketHub.getTickets(TicketHub.java:65)
+      at org.openpolicyagent.opa.openapi.utils.SpeakeasyHTTPClient.send(SpeakeasyHTTPClient.java:20)
+      at org.openpolicyagent.opa.openapi.OpaApiClient.executePolicyWithInput(OpaApiClient.java:508)
+      at org.openpolicyagent.opa.openapi.models.operations.ExecutePolicyWithInputRequestBuilder.call(ExecutePolicyWithInputRequestBuilder.java:37)
+      at org.openpolicyagent.opa.OPAClient.executePolicy(OPAClient.java:536)
+      at org.openpolicyagent.opa.OPAClient.evaluateMachinery(OPAClient.java:638)
+      at org.openpolicyagent.opa.OPAClient.evaluate(OPAClient.java:421)
+      at org.openpolicyagent.opa.OPAClient.check(OPAClient.java:119)
+      at org.openpolicyagent.opa.tickethub.TicketHub.authz(TicketHub.java:207)
+      at org.openpolicyagent.opa.tickethub.TicketHub.getTickets(TicketHub.java:65)
       at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
       ...
       at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:894)
@@ -62,13 +62,13 @@ If there is a problem with the structure of your policy input or output, it can 
 This exception was caused by the rule head `tickets/allow` was undefined with the input provided to the request. The SDK treats such situations as an error condition.
 
 ```javastacktrace
-com.styra.opa.OPAException: executing policy at 'Optional[tickets/allow]' succeeded, but OPA did not reply with a result
-      at com.styra.opa.OPAClient.executePolicy(OPAClient.java:559)
-      at com.styra.opa.OPAClient.evaluateMachinery(OPAClient.java:638)
-      at com.styra.opa.OPAClient.evaluate(OPAClient.java:421)
-      at com.styra.opa.OPAClient.check(OPAClient.java:119)
-      at com.styra.tickethub.TicketHub.authz(TicketHub.java:206)
-      at com.styra.tickethub.TicketHub.getTickets(TicketHub.java:64)
+org.openpolicyagent.opa.OPAException: executing policy at 'Optional[tickets/allow]' succeeded, but OPA did not reply with a result
+      at org.openpolicyagent.opa.OPAClient.executePolicy(OPAClient.java:559)
+      at org.openpolicyagent.opa.OPAClient.evaluateMachinery(OPAClient.java:638)
+      at org.openpolicyagent.opa.OPAClient.evaluate(OPAClient.java:421)
+      at org.openpolicyagent.opa.OPAClient.check(OPAClient.java:119)
+      at org.openpolicyagent.opa.tickethub.TicketHub.authz(TicketHub.java:206)
+      at org.openpolicyagent.opa.tickethub.TicketHub.getTickets(TicketHub.java:64)
       at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
       at java.base/java.lang.reflect.Method.invoke(Method.java:578)
       at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52)
@@ -80,13 +80,13 @@ com.styra.opa.OPAException: executing policy at 'Optional[tickets/allow]' succee
 This exception was caused by a rule head `nonexistant/path` which was not defined in the policy at all. Observe that this looks the same as the example above. Considering a rule head not existing, as opposed being conditionally defined based on the `input` object -- these two situations may manifest the same from the perspective of the SDK, but the latter case may appear "flaky" depending on how often the application encounters an input for which the configured rule head is defined.
 
 ```javastacktrace
-com.styra.opa.OPAException: executing policy at 'Optional[nonexistant/path]' succeeded, but OPA did not reply with a result
-      at com.styra.opa.OPAClient.executePolicy(OPAClient.java:559)
-      at com.styra.opa.OPAClient.evaluateMachinery(OPAClient.java:638)
-      at com.styra.opa.OPAClient.evaluate(OPAClient.java:421)
-      at com.styra.opa.OPAClient.check(OPAClient.java:119)
-      at com.styra.tickethub.TicketHub.authz(TicketHub.java:207)
-      at com.styra.tickethub.TicketHub.getTickets(TicketHub.java:64)
+org.openpolicyagent.opa.OPAException: executing policy at 'Optional[nonexistant/path]' succeeded, but OPA did not reply with a result
+      at org.openpolicyagent.opa.OPAClient.executePolicy(OPAClient.java:559)
+      at org.openpolicyagent.opa.OPAClient.evaluateMachinery(OPAClient.java:638)
+      at org.openpolicyagent.opa.OPAClient.evaluate(OPAClient.java:421)
+      at org.openpolicyagent.opa.OPAClient.check(OPAClient.java:119)
+      at org.openpolicyagent.opa.tickethub.TicketHub.authz(TicketHub.java:207)
+      at org.openpolicyagent.opa.tickethub.TicketHub.getTickets(TicketHub.java:64)
       at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
       at java.base/java.lang.reflect.Method.invoke(Method.java:578)
       ...
@@ -98,9 +98,9 @@ This exception was caused by the OPA policy returning an object, when a boolean 
 
 ```javastacktrace
 java.lang.ClassCastException: class java.util.LinkedHashMap cannot be cast to class java.lang.Boolean (java.util.LinkedHashMap and java.lang.Boolean are in module java.base of loader 'bootstrap')
-      at com.styra.opa.OPAClient.check(OPAClient.java:119)
-      at com.styra.tickethub.TicketHub.authz(TicketHub.java:206)
-      at com.styra.tickethub.TicketHub.getTickets(TicketHub.java:64)
+      at org.openpolicyagent.opa.OPAClient.check(OPAClient.java:119)
+      at org.openpolicyagent.opa.tickethub.TicketHub.authz(TicketHub.java:206)
+      at org.openpolicyagent.opa.tickethub.TicketHub.getTickets(TicketHub.java:64)
       at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
       at java.base/java.lang.reflect.Method.invoke(Method.java:578)
       at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52)
@@ -114,8 +114,8 @@ This exception was caused by the OPA policy returning a boolean when an object w
 
 ```javastacktrace
 java.lang.ClassCastException: class java.lang.Boolean cannot be cast to class java.util.HashMap (java.lang.Boolean and java.util.HashMap are in module java.base of loader 'bootstrap')
-      at com.styra.tickethub.TicketHub.authz(TicketHub.java:207)
-      at com.styra.tickethub.TicketHub.getTickets(TicketHub.java:64)
+      at org.openpolicyagent.opa.tickethub.TicketHub.authz(TicketHub.java:207)
+      at org.openpolicyagent.opa.tickethub.TicketHub.getTickets(TicketHub.java:64)
       at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
       at java.base/java.lang.reflect.Method.invoke(Method.java:578)
       at org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactory.lambda$static$0(ResourceMethodInvocationHandlerFactory.java:52)

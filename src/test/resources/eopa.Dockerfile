@@ -10,7 +10,7 @@ RUN chmod +x /entrypoint.sh
 
 # We name the eopa binary opa so that the entrypoint script does not need to be
 # modified.
-COPY --from=ghcr.io/styrainc/enterprise-opa:latest /ko-app/enterprise-opa-private /usr/bin/opa
+COPY --from=ghcr.io/open-policy-agent/eopa:latest /ko-app/eopa /usr/bin/opa
 
 ENTRYPOINT ["/entrypoint.sh"]
 

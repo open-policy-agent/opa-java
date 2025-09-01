@@ -49,7 +49,7 @@ jar {
     dependsOn(":generatePomFileForMavenPublication")
     archiveBaseName = "${artifactId}"
 
-    into("META-INF/maven/com.styra/opa") {
+    into("META-INF/maven/org.openpolicyagent.opa/opa") {
         from("$buildDir/pom.xml")
     }
 }
@@ -104,19 +104,19 @@ publishing {
         maven(MavenPublication) {
             // note that properties can't yet be used below!
             // https://github.com/gradle/gradle/issues/18619
-            groupId = "com.styra"
+            groupId = "org.openpolicyagent.opa"
             artifactId = "opa"
             version = "2.1.1"
 
             from components.java
 
             pom {
-                name = 'Styra Java SDK'
-                description = 'SDK enabling Java developers to easily integrate with the Styra API.'
-                url = 'https://github.com/styrainc/opa-java'
+                name = 'OPA Java SDK'
+                description = 'SDK enabling Java developers to easily integrate with the OPA APIs.'
+                url = 'https://github.com/open-policy-agent/opa-java'
                 scm {
-                    url = 'github.com/styrainc/opa-java'
-                    connection = 'scm:git:ssh://git@github.com/styrainc/opa-java.git'
+                    url = 'github.com/open-policy-agent/opa-java'
+                    connection = 'scm:git:ssh://git@github.com/open-policy-agent/opa-java.git'
                 }
                 licenses {
                     license {
@@ -126,14 +126,14 @@ publishing {
                 }
                 developers {
                     developer {
-                        name = 'Styra'
-                        organization = 'Styra'
-                        email = 'devrel@styra.com'
+                        name = 'The OPA Authors'
+                        organization = 'Open Policy Agent'
+                        email = 'open-policy-agent@googlegroups.com'
                     }
                 }
                 organization {
-                    name = 'Styra'
-                    url = 'www.styra.com'
+                    name = 'Open Policy Agent'
+                    url = 'www.openpolicyagent.org'
                 }
             }
         }

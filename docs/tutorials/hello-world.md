@@ -44,8 +44,8 @@ Next, modify the Java code to utilize the OPA Java SDK in `app/src/main/java/org
  */
 package org.example;
 
-import com.styra.opa.OPAClient;
-import com.styra.opa.OPAException;
+import org.openpolicyagent.opa.OPAClient;
+import org.openpolicyagent.opa.OPAException;
 
 import java.util.Map;
 import java.util.List;
@@ -92,7 +92,7 @@ public class App {
 The `app/build.gradle` file must also be updated to pull in the OPA-Java SDK. Under the `dependencies` section, add the following:
 
 ```gradle
-    implementation group: 'com.styra', name: 'opa', version: '+'
+    implementation group: 'org.openpolicyagent.opa', name: 'opa', version: '+'
 ```
 
 > [!WARNING]
@@ -179,8 +179,8 @@ The project is now prepared for experimenting with the OPA Java SDK locally. Try
  */
 package org.example;
 
-import com.styra.opa.OPAClient;
-import com.styra.opa.OPAException;
+import org.openpolicyagent.opa.OPAClient;
+import org.openpolicyagent.opa.OPAException;
 
 import java.util.Map;
 import java.util.List;
