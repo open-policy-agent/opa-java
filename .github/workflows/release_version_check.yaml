@@ -1,8 +1,10 @@
 name: "05 - Release Version Check"
-
 "on":
   schedule:
     - cron: 0 0 * * *
+
+permissions:
+  contents: read
 
 jobs:
   verscheck:
@@ -30,4 +32,3 @@ jobs:
           footer: "Linked Repo <{repo_url}|{repo}> | <{run_url}|View Run>"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-

@@ -1,9 +1,4 @@
 name: "02 - Generate"
-permissions:
-  checks: write
-  contents: write
-  pull-requests: write
-  statuses: write
 "on":
   workflow_dispatch:
     inputs:
@@ -13,6 +8,13 @@ permissions:
         default: false
   schedule:
     - cron: 0 0 * * 0
+
+permissions:
+  checks: write
+  contents: write
+  pull-requests: write
+  statuses: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest

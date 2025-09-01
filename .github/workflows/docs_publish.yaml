@@ -4,6 +4,9 @@ name: "03 - Publish Docs"
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   #publish:
   #  uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@v15
