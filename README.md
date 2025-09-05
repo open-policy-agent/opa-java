@@ -1,16 +1,16 @@
 # OPA Java SDK
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Maven Central Version](https://img.shields.io/maven-central/v/com.styra/opa?label=Maven%20Central&logo=apache-maven&color=%2324b6e0)](https://central.sonatype.com/artifact/com.styra/opa)
+[![Maven Central Version](https://img.shields.io/maven-central/v/org.openpolicyagent.opa/opa?label=Maven%20Central&logo=apache-maven&color=%2324b6e0)](https://central.sonatype.com/artifact/org.openpolicyagent.opa/opa)
 
 > [!IMPORTANT]
-> The documentation for this SDK lives at https://docs.styra.com/sdk, with reference documentation available at https://styrainc.github.io/opa-java/javadoc, and development documentation at https://styrainc.github.io/opa-java/
+> The documentation for this SDK lives at [`docs/`](https://github.com/open-policy-agent/opa-java/tree/main/docs), with reference documentation available at https://open-policy-agent.github.io/opa-java/javadoc, and development documentation at https://open-policy-agent.github.io/opa-java/
 
-You can use the Styra OPA SDK to connect to [Open Policy Agent](https://www.openpolicyagent.org/) and [Enterprise OPA](https://www.styra.com/enterprise-opa/) deployments.
+You can use the OPA Java SDK to connect to [Open Policy Agent](https://www.openpolicyagent.org/) and [EOPA](https://github.com/open-policy-agent/eopa) deployments.
 
 ## SDK Installation
 
-This package is published on Maven Central as [`com.styra/opa`](https://central.sonatype.com/artifact/com.styra/opa/overview). The Maven Central page includes up-to-date instructions to add it as a dependency to your Java project, tailored for a variety of build systems including Maven and Gradle.
+This package is published on Maven Central as [`org.openpolicyagent.opa/opa`](https://central.sonatype.com/artifact/org.openpolicyagent.opa/opa/overview). The Maven Central page includes up-to-date instructions to add it as a dependency to your Java project, tailored for a variety of build systems including Maven and Gradle.
 
 If you wish to build from source and publish the SDK artifact to your local Maven repository (on your filesystem) then use the following command (after cloning the git repo locally):
 
@@ -29,8 +29,8 @@ gradlew.bat publishToMavenLocal -Pskip.signing
 ```java
 package org.example;
 
-import com.styra.opa.OPAClient;
-import com.styra.opa.OPAException;
+import org.openpolicyagent.opa.OPAClient;
+import org.openpolicyagent.opa.OPAException;
 
 import java.util.Map;
 import java.util.List;
@@ -85,7 +85,7 @@ public class App {
 <!-- Start Summary [summary] -->
 ## Summary
 
-For more information about the API: [Enterprise OPA documentation](https://docs.styra.com/enterprise-opa)
+For more information about the API: [EOPA documentation](https://github.com/open-policy-agent/eopa/tree/main/docs)
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -113,11 +113,11 @@ For more information about the API: [Enterprise OPA documentation](https://docs.
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.errors.ServerError;
-import com.styra.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
-import com.styra.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.errors.ServerError;
+import org.openpolicyagent.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -143,11 +143,11 @@ public class Application {
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.errors.ServerError;
-import com.styra.opa.openapi.models.operations.*;
-import com.styra.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.errors.ServerError;
+import org.openpolicyagent.opa.openapi.models.operations.*;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -180,11 +180,11 @@ public class Application {
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.BatchServerError;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.operations.*;
-import com.styra.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.BatchServerError;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.operations.*;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 import java.util.Map;
 
@@ -242,11 +242,11 @@ The default server can be overridden globally using the `.serverURL(String serve
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.errors.ServerError;
-import com.styra.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
-import com.styra.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.errors.ServerError;
+import org.openpolicyagent.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -287,11 +287,11 @@ By default, an API error will throw a `models/errors/SDKError` exception. When c
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.errors.ServerError;
-import com.styra.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
-import com.styra.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.errors.ServerError;
+import org.openpolicyagent.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -328,12 +328,12 @@ You can set the security parameters through the `security` builder method when i
 ```java
 package hello.world;
 
-import com.styra.opa.openapi.OpaApiClient;
-import com.styra.opa.openapi.models.errors.ClientError;
-import com.styra.opa.openapi.models.errors.ServerError;
-import com.styra.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
-import com.styra.opa.openapi.models.shared.Input;
-import com.styra.opa.openapi.models.shared.Security;
+import org.openpolicyagent.opa.openapi.OpaApiClient;
+import org.openpolicyagent.opa.openapi.models.errors.ClientError;
+import org.openpolicyagent.opa.openapi.models.errors.ServerError;
+import org.openpolicyagent.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
+import org.openpolicyagent.opa.openapi.models.shared.Input;
+import org.openpolicyagent.opa.openapi.models.shared.Security;
 import java.lang.Exception;
 
 public class Application {
@@ -362,7 +362,7 @@ public class Application {
 
 ## Development
 
-This repository includes components generated by [Speakeasy](https://www.speakeasyapi.dev/) based on [this OpenAPI spec](https://github.com/StyraInc/enterprise-opa/tree/main/openapi), as well as human authored code that simplifies usage. The Speakeasy generated code resides in the [com.styra.opa.sdk](https://styrainc.github.io/opa-java/javadoc/com/styra/opa/sdk/package-summary.html) package and offers the greatest level of control, but is more verbose and complicated. The hand written [com.styra.opa](https://styrainc.github.io/opa-java/javadoc/com/styra/opa/package-summary.html) package offers a simplified API designed to make using the OPA REST API straightforward for common use cases.
+This repository includes components generated by [Speakeasy](https://www.speakeasyapi.dev/) based on [this OpenAPI spec](https://github.com/open-policy-agent/eopa/tree/main/openapi), as well as human authored code that simplifies usage. The Speakeasy generated code resides in the [org.openpolicyagent.opa.sdk](https://open-policy-agent.github.io/opa-java/javadoc/org/openpolicyagent/opa/sdk/package-summary.html) package and offers the greatest level of control, but is more verbose and complicated. The hand written [org.openpolicyagent.opa](https://open-policy-agent.github.io/opa-java/javadoc/org/openpolicyagent/opa/package-summary.html) package offers a simplified API designed to make using the OPA REST API straightforward for common use cases.
 
 ### Build Instructions
 
@@ -376,5 +376,4 @@ This repository includes components generated by [Speakeasy](https://www.speakea
 
 ## Community
 
-For questions, discussions and announcements related to Styra products, services and open source projects, please join
-the Styra community on [Slack](https://communityinviter.com/apps/styracommunity/signup)!
+For questions, discussions, and announcements, please join the OPA community on [Slack](https://slack.openpolicyagent.org/)!

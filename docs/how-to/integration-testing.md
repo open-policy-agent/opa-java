@@ -41,7 +41,7 @@ opa $@
 ```
 
 > [!TIP]
-> It is possible to simply use the `openpolicyagent/opa` image directly rather than providing a custom `Dockerfile` and entry point script, however doing it this way provides a clear cut point for later customizing the `Dockerfile` or adding more complex logic to the entry point script. For example, the [OPA Java SDK's unit tests](https://github.com/StyraInc/opa-java/tree/main/src/test) also include nginx acting as a reverse proxy.
+> It is possible to simply use the `openpolicyagent/opa` image directly rather than providing a custom `Dockerfile` and entry point script, however doing it this way provides a clear cut point for later customizing the `Dockerfile` or adding more complex logic to the entry point script. For example, the [OPA Java SDK's unit tests](https://github.com/open-policy-agent/opa-java/tree/main/src/test) also include nginx acting as a reverse proxy.
 
 All that now remains is updating the Java code for the unit tests to utilize Testcontainers.
 
@@ -51,7 +51,7 @@ All that now remains is updating the Java code for the unit tests to utilize Tes
 package com.example;
 
 // ...
-import com.styra.opa.OPAClient;
+import org.openpolicyagent.opa.OPAClient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -122,8 +122,8 @@ class DemoTest {
 
 Some working examples of this test strategy:
 
-- [The OPA Java SDK's tests](https://github.com/StyraInc/opa-java/blob/main/src/test/java/com/styra/opa/OPATest.java).
-- [The OPA Spring Boot SDK's tests](https://github.com/StyraInc/opa-springboot/blob/main/src/test/java/com/styra/opa/springboot/OPAAuthorizationManagerTest.java).
+- [The OPA Java SDK's tests](https://github.com/open-policy-agent/opa-java/blob/main/src/test/java/org/openpolicyagent/opa/OPATest.java).
+- [The OPA Spring Boot SDK's tests](https://github.com/open-policy-agent/opa-springboot/blob/main/src/test/java/org/openpolicyagent/opa/springboot/OPAAuthorizationManagerTest.java).
 
 > [!TIP]
 > You could also choose to make the `OPAClient` a private field of the test class (`DemoTest` in this example), and place `opa = new OPAClient(address)` in the `setUp()` function. Which approach is better is a matter of style and preference.

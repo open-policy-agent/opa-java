@@ -10,14 +10,14 @@ set -u
 set -x
 
 # https://docs.github.com/en/rest/releases/releases?apiVersion=2022-11-28#list-releases
-GITHUB_REPO="styrainc/opa-java"
+GITHUB_REPO="open-policy-agent/opa-java"
 GITHUB_API_URL="https://api.github.com/repos/$GITHUB_REPO/releases"
 
 # https://central.sonatype.org/search/rest-api-guide/
 #
 # Note that there is further filtering done using opa eval later when
 # MAVEN_RELEASE is calculated.
-MAVEN_URL='https://search.maven.org/solrsearch/select?q=g:com.styra&rows=20&wt=json'
+MAVEN_URL='https://search.maven.org/solrsearch/select?q=g:org.openpolicyagent.opa&rows=20&wt=json'
 
 # If the release is less than this many seconds old, ignore it.
 # 86400s == 1 day.

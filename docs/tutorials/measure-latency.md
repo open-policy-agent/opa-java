@@ -1,6 +1,6 @@
 # OPA Java Tutorial: Measuring Latency
 
-This tutorial will show you how you can utilize the [`OPALatencyMeasuringHTTPClient`](https://styrainc.github.io/opa-java/javadoc/com/styra/opa/utils/OPALatencyMeasuringHTTPClient.html) implementation of [`HTTPClient`](https://styrainc.github.io/opa-java/javadoc/com/styra/opa/openapi/utils/HTTPClient.html) with the OPA Java SDK to measure latency information about each request the SDK makes.
+This tutorial will show you how you can utilize the [`OPALatencyMeasuringHTTPClient`](https://open-policy-agent.github.io/opa-java/javadoc/org/openpolicyagent/opa/utils/OPALatencyMeasuringHTTPClient.html) implementation of [`HTTPClient`](https://open-policy-agent.github.io/opa-java/javadoc/org/openpolicyagent/opa/openapi/utils/HTTPClient.html) with the OPA Java SDK to measure latency information about each request the SDK makes.
 
 ## Setup
 
@@ -8,7 +8,7 @@ This tutorial picks up where the ["Hello World" tutorial](./hello-world) leaves 
 
 ## Add The `OPALatencyMeasuringHTTPClient` Client To The SDK
 
-To enable latency measurements, the `OPALatencyMeasuringHTTPClient` class in `com.styra.opa.utils` can be used in lieu of the default HTTP client. Internally, it wraps the default client, but also uses the Java standard library logger to record latency information for each request. The following changes adapt the "Hello World" sample application to capture latency measurements and send them to the console.
+To enable latency measurements, the `OPALatencyMeasuringHTTPClient` class in `org.openpolicyagent.opa.utils` can be used in lieu of the default HTTP client. Internally, it wraps the default client, but also uses the Java standard library logger to record latency information for each request. The following changes adapt the "Hello World" sample application to capture latency measurements and send them to the console.
 
 ```java
 /*
@@ -16,9 +16,9 @@ To enable latency measurements, the `OPALatencyMeasuringHTTPClient` class in `co
  */
 package org.example;
 
-import com.styra.opa.OPAClient;
-import com.styra.opa.OPAException;
-import com.styra.opa.utils.OPALatencyMeasuringHTTPClient;
+import org.openpolicyagent.opa.OPAClient;
+import org.openpolicyagent.opa.OPAException;
+import org.openpolicyagent.opa.utils.OPALatencyMeasuringHTTPClient;
 
 import java.util.logging.Level;
 import java.util.Map;
@@ -77,7 +77,7 @@ $ ./gradlew run
 
 > Task :app:run
 Hello World!
-Aug 06, 2024 5:24:29 PM com.styra.opa.utils.OPALatencyMeasuringHTTPClient send
+Aug 06, 2024 5:24:29 PM org.openpolicyagent.opa.utils.OPALatencyMeasuringHTTPClient send
 INFO: path='/v1/data/authz/allow' latency=137ms
 allowed: true
 
@@ -89,7 +89,7 @@ Notice the lines logging the latency of the call to OPA.
 
 ## Configure Message Format
 
-The latency measuring client supports customizing the format of the log messages using the [`setLatencyMeasurementFormat`](https://styrainc.github.io/opa-java/javadoc/com/styra/opa/utils/OPALatencyMeasuringHTTPClient.html#setLatencyMeasurementFormat(java.lang.String)) method. This accepts a format string that will be used with [`java.text.MessageFormat`](https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html).
+The latency measuring client supports customizing the format of the log messages using the [`setLatencyMeasurementFormat`](https://open-policy-agent.github.io/opa-java/javadoc/org/openpolicyagent/opa/utils/OPALatencyMeasuringHTTPClient.html#setLatencyMeasurementFormat(java.lang.String)) method. This accepts a format string that will be used with [`java.text.MessageFormat`](https://docs.oracle.com/javase/8/docs/api/java/text/MessageFormat.html).
 
 Add the call to `setLatencyMeasurementFormat` to turn JSON format the latency log.
 
@@ -109,7 +109,7 @@ $ ./gradlew run
 
 > Task :app:run
 Hello World!
-Aug 06, 2024 5:23:59 PM com.styra.opa.utils.OPALatencyMeasuringHTTPClient send
+Aug 06, 2024 5:23:59 PM org.openpolicyagent.opa.utils.OPALatencyMeasuringHTTPClient send
 INFO: {"type": "latency-measurement", "path": "/v1/data/authz/allow", "latency": 134}
 allowed: true
 
@@ -129,9 +129,9 @@ BUILD SUCCESSFUL in 1s
  */
 package org.example;
 
-import com.styra.opa.OPAClient;
-import com.styra.opa.OPAException;
-import com.styra.opa.utils.OPALatencyMeasuringHTTPClient;
+import org.openpolicyagent.opa.OPAClient;
+import org.openpolicyagent.opa.OPAException;
+import org.openpolicyagent.opa.utils.OPALatencyMeasuringHTTPClient;
 
 import java.util.List;
 import java.util.Map;
