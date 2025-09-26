@@ -4,8 +4,6 @@ name: "Publish to Maven Central"
   push:
     branches:
       - main
-    paths:
-      - CHANGELOG.md
 
 permissions:
   contents: read
@@ -19,35 +17,28 @@ jobs:
       - name: Tune GitHub-hosted runner network
         uses: smorimoto/tune-github-hosted-runner-network@v1
       - uses: actions/checkout@v5
-      - run: ./scripts/is_release.sh >> $GITHUB_OUTPUT
-        id: build
+      - name: Get current Gradle project version
+        id: gradle-version
+        run: echo "version=$(./gradlew properties | grep "^version:" | cut -d' ' -f2)"  >> $GITHUB_OUTPUT
+      - name: Get current Maven project version
+        id: maven-version
+        run: echo "version=$(curl -s "https://repo1.maven.org/maven2/io/github/open-policy-agent/opa/maven-metadata.xml" | grep -o '<latest>[^<]*</latest>' | sed 's/<[^>]*>//g')" >> $GITHUB_OUTPUT
       - name: Set up Java
+        if: ${{ steps.gradle-version.outputs.version != steps.gradle-version.outputs.version }}
         uses: actions/setup-java@v5
         with:
           java-version: "17"
           distribution: "corretto"
           cache: "gradle"
-        if: ${{ steps.build.outputs.release  == 'true' }}
       - uses: gradle/actions/setup-gradle@v4
-        if: ${{ steps.build.outputs.release  == 'true' }}
+        if: ${{ steps.gradle-version.outputs.version != steps.gradle-version.outputs.version }}
       - name: Publish to Sonatype Central
+        if: ${{ steps.gradle-version.outputs.version != steps.gradle-version.outputs.version }}
         run: |-
           pwd
           ./gradlew build sonatypeCentralUpload --no-daemon
         env:
-          SONATYPE_USERNAME: ${{ secrets.sonatype_username }}
-          SONATYPE_PASSWORD: ${{ secrets.sonatype_password }}
-          SONATYPE_SIGNING_KEY: ${{ secrets.java_gpg_secret_key }}
-          SIGNING_KEY_PASSPHRASE: ${{ secrets.java_gpg_passphrase }}
-        if: ${{ steps.build.outputs.release  == 'true' }}
-      - uses: ravsamhq/notify-slack-action@v2
-        if: ${{ steps.build.outputs.release  == 'true' && always() && env.SLACK_WEBHOOK_URL != '' }}
-        with:
-          status: ${{ job.status }}
-          token: ${{ secrets.github_access_token }}
-          notify_when: "failure"
-          notification_title: "Failed to Publish Maven Central Release"
-          message_format: "{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>"
-          footer: "Linked Repo <{repo_url}|{repo}> | <{run_url}|View Run>"
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_SIGNING_KEY: ${{ secrets.JAVA_GPG_SECRET_KEY }}
+          SIGNING_KEY_PASSPHRASE: ${{ secrets.JAVA_GPG_PASSPHRASE }}
