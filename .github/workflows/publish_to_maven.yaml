@@ -17,21 +17,19 @@ jobs:
       - name: Tune GitHub-hosted runner network
         uses: smorimoto/tune-github-hosted-runner-network@v1
       - uses: actions/checkout@v5
-      - name: Get current Gradle project version
-        id: gradle-version
-        run: echo "version=$(./gradlew properties | grep "^version:" | cut -d' ' -f2)"  >> $GITHUB_OUTPUT
-      - name: Get current Maven project version
-        id: maven-version
-        run: echo "version=$(curl -s "https://repo1.maven.org/maven2/io/github/open-policy-agent/opa/maven-metadata.xml" | grep -o '<latest>[^<]*</latest>' | sed 's/<[^>]*>//g')" >> $GITHUB_OUTPUT
       - name: Set up Java
-        if: ${{ steps.gradle-version.outputs.version != steps.gradle-version.outputs.version }}
         uses: actions/setup-java@v5
         with:
           java-version: "17"
           distribution: "corretto"
           cache: "gradle"
       - uses: gradle/actions/setup-gradle@v4
-        if: ${{ steps.gradle-version.outputs.version != steps.gradle-version.outputs.version }}
+      - name: Get current Gradle project version
+        id: gradle-version
+        run: echo "version=$(./gradlew properties | grep "^version:" | cut -d' ' -f2)"  >> $GITHUB_OUTPUT
+      - name: Get current Maven project version
+        id: maven-version
+        run: echo "version=$(curl -s "https://repo1.maven.org/maven2/io/github/open-policy-agent/opa/maven-metadata.xml" | grep -o '<latest>[^<]*</latest>' | sed 's/<[^>]*>//g')" >> $GITHUB_OUTPUT
       - name: Publish to Sonatype Central
         if: ${{ steps.gradle-version.outputs.version != steps.gradle-version.outputs.version }}
         run: |-
