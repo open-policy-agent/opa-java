@@ -26,12 +26,18 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - name: Get current Gradle project version
         id: gradle-version
-        run: echo "version=$(./gradlew properties | grep "^version:" | cut -d' ' -f2)"  >> $GITHUB_OUTPUT
+        run: |
+          VERSION="version=$(./gradlew properties | grep "^version:" | cut -d' ' -f2)"
+          echo $VERSION
+          echo $VERSION >> $GITHUB_OUTPUT
       - name: Get current Maven project version
         id: maven-version
-        run: echo "version=$(curl -s "https://repo1.maven.org/maven2/io/github/open-policy-agent/opa/maven-metadata.xml" | grep -o '<latest>[^<]*</latest>' | sed 's/<[^>]*>//g')" >> $GITHUB_OUTPUT
+        run: |
+          VERSION="version=$(curl -s "https://repo1.maven.org/maven2/io/github/open-policy-agent/opa/maven-metadata.xml"
+          echo $VERSION
+          echo $VERSION | grep -o '<latest>[^<]*</latest>' | sed 's/<[^>]*>//g')" >> $GITHUB_OUTPUT
       - name: Publish to Sonatype Central
-        if: ${{ steps.gradle-version.outputs.version != steps.gradle-version.outputs.version }}
+        if: ${{ steps.gradle-version.outputs.version != steps.maven-version.outputs.version }}
         run: |-
           pwd
           ./gradlew build sonatypeCentralUpload --no-daemon
