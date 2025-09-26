@@ -13,7 +13,7 @@ RELEASES_MD_VERSION="$(awk '/^### Generated/ {s=1} s==1 && /java v[0-9]/ {s=0; p
 
 BUILD_GRADLE_VERSION="$(awk '$1 == "version"' < build.gradle | cut -d'"' -f2 | tail -n 1)"
 
-SDK_VERSION="$(awk '$3 == "sdkVersion"' < src/main/java/org/openpolicyagent/opa/openapi/SDKConfiguration.java | cut -d'"' -f2)"
+SDK_VERSION="$(awk '$3 == "sdkVersion"' < src/main/java/io/github/open_policy_agent/opa/openapi/SDKConfiguration.java | cut -d'"' -f2)"
 
 ALL_VERSIONS="$(printf '%s\n%s\n%s\n%s\n' "$GEN_YAML_VERSION" "$RELEASES_MD_VERSION" "$BUILD_GRADLE_VERSION" "$SDK_VERSION")"
 
@@ -22,7 +22,7 @@ if [ "$(echo "$ALL_VERSIONS" | sort | uniq | wc -l)" -gt 1 ] ; then
 	echo ".speakeasy/gen.yaml: $GEN_YAML_VERSION" 1>&2
 	echo "RELEASES.md: $RELEASES_MD_VERSION" 1>&2
 	echo "build.gradle: $BUILD_GRADLE_VERSION" 1>&2
-	echo "src/main/java/org/openpolicyagent/opa/openapi/SDKConfiguration.java: $SDK_VERSION" 1>&2
+	echo "src/main/java/io/github/open_policy_agent/opa/openapi/SDKConfiguration.java: $SDK_VERSION" 1>&2
 	exit 1
 fi
 

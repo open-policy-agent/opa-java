@@ -2,11 +2,11 @@
 ```java
 package hello.world;
 
-import org.openpolicyagent.opa.openapi.OpaApiClient;
-import org.openpolicyagent.opa.openapi.models.errors.ClientError;
-import org.openpolicyagent.opa.openapi.models.errors.ServerError;
-import org.openpolicyagent.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
-import org.openpolicyagent.opa.openapi.models.shared.Input;
+import io.github.open_policy_agent.opa.openapi.OpaApiClient;
+import io.github.open_policy_agent.opa.openapi.models.errors.ClientError;
+import io.github.open_policy_agent.opa.openapi.models.errors.ServerError;
+import io.github.open_policy_agent.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
+import io.github.open_policy_agent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -30,11 +30,11 @@ public class Application {
 ```java
 package hello.world;
 
-import org.openpolicyagent.opa.openapi.OpaApiClient;
-import org.openpolicyagent.opa.openapi.models.errors.ClientError;
-import org.openpolicyagent.opa.openapi.models.errors.ServerError;
-import org.openpolicyagent.opa.openapi.models.operations.*;
-import org.openpolicyagent.opa.openapi.models.shared.Input;
+import io.github.open_policy_agent.opa.openapi.OpaApiClient;
+import io.github.open_policy_agent.opa.openapi.models.errors.ClientError;
+import io.github.open_policy_agent.opa.openapi.models.errors.ServerError;
+import io.github.open_policy_agent.opa.openapi.models.operations.*;
+import io.github.open_policy_agent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -65,11 +65,11 @@ public class Application {
 ```java
 package hello.world;
 
-import org.openpolicyagent.opa.openapi.OpaApiClient;
-import org.openpolicyagent.opa.openapi.models.errors.BatchServerError;
-import org.openpolicyagent.opa.openapi.models.errors.ClientError;
-import org.openpolicyagent.opa.openapi.models.operations.*;
-import org.openpolicyagent.opa.openapi.models.shared.Input;
+import io.github.open_policy_agent.opa.openapi.OpaApiClient;
+import io.github.open_policy_agent.opa.openapi.models.errors.BatchServerError;
+import io.github.open_policy_agent.opa.openapi.models.errors.ClientError;
+import io.github.open_policy_agent.opa.openapi.models.operations.*;
+import io.github.open_policy_agent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 import java.util.Map;
 

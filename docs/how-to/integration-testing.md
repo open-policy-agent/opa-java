@@ -51,7 +51,7 @@ All that now remains is updating the Java code for the unit tests to utilize Tes
 package com.example;
 
 // ...
-import org.openpolicyagent.opa.OPAClient;
+import io.github.open_policy_agent.opa.OPAClient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -122,8 +122,8 @@ class DemoTest {
 
 Some working examples of this test strategy:
 
-- [The OPA Java SDK's tests](https://github.com/open-policy-agent/opa-java/blob/main/src/test/java/org/openpolicyagent/opa/OPATest.java).
-- [The OPA Spring Boot SDK's tests](https://github.com/open-policy-agent/opa-springboot/blob/main/src/test/java/org/openpolicyagent/opa/springboot/OPAAuthorizationManagerTest.java).
+- [The OPA Java SDK's tests](https://github.com/open-policy-agent/opa-java/blob/main/src/test/java/io/github/open_policy_agent/opa/OPATest.java).
+- [The OPA Spring Boot SDK's tests](https://github.com/open-policy-agent/opa-springboot/blob/main/src/test/java/io/github/open_policy_agent/opa/springboot/OPAAuthorizationManagerTest.java).
 
 > [!TIP]
 > You could also choose to make the `OPAClient` a private field of the test class (`DemoTest` in this example), and place `opa = new OPAClient(address)` in the `setUp()` function. Which approach is better is a matter of style and preference.

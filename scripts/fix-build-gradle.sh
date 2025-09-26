@@ -83,10 +83,10 @@ ensure_plugin() {
 ensure_plugin 'id "nebula.lint".*' 'id "nebula.lint" version "17.8.0"' './build.gradle'
 
 # Rewrite the artifact and group ID to be one level "up", so we publish
-# org.openpolicyagent.opa rather than org.openpolicyagent.opa.openapi.
-"$SED" 's#into("META-INF/maven/org.openpolicyagent.opa/openapi")#into("META-INF/maven/org.openpolicyagent.opa/opa")#g' < build.gradle | \
-	"$SED" 's#group = "org.openpolicyagent.opa"#group = "org.openpolicyagent.opa"#g' | \
-	"$SED" 's#groupId = "org.openpolicyagent.opa"#groupId = "org.openpolicyagent.opa"#g' | \
+# io.github.open_policy_agent.opa rather than io.github.open_policy_agent.opa.openapi.
+"$SED" 's#into("META-INF/maven/io.github.open_policy_agent.opa/openapi")#into("META-INF/maven/io.github.open_policy_agent.opa/opa")#g' < build.gradle | \
+	"$SED" 's#group = "io.github.open_policy_agent.opa"#group = "io.github.open_policy_agent.opa"#g' | \
+	"$SED" 's#groupId = "io.github.open_policy_agent.opa"#groupId = "io.github.open_policy_agent.opa"#g' | \
 	"$SED" 's#artifactId = "openapi"#artifactId = "opa"#g' | \
 	"$SED" 's#archiveBaseName = "openapi"#archiveBaseName = "opa"#g' | \
 	"$SED" 's#libs/openapi-#libs/opa-#g' > build.gradle.tmp
@@ -101,7 +101,7 @@ mv build.gradle.tmp build.gradle
 "$SED" -i "s/rootProject[.]name = 'openapi'/rootProject.name = 'opa'/g" ./settings.gradle
 
 # Update gradle.properties to set the groupId and artifactId
-"$SED" -i "s/groupId=org.openpolicyagent.opa/groupId=org.openpolicyagent.opa/g" ./gradle.properties
+"$SED" -i "s/groupId=io.github.open_policy_agent.opa/groupId=io.github.open_policy_agent.opa/g" ./gradle.properties
 "$SED" -i "s/artifactId=openapi/artifactId=opa/g" ./gradle.properties
 
 

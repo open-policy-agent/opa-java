@@ -28,7 +28,7 @@ As a matter of convention, all post-generate modifications that are carried out 
 The script [`scripts/fix-build-gradle.sh`](https://github.com/open-policy-agent/opa-java/blob/main/scripts/fix-build-gradle.sh) performs the necessary modifications to `build.gradle` and `settings.gradle`. These changes include:
 
 * The root project name in `settings.gradle` is changed from `openapi` to `opa`.
-* The group and artifact IDs in `build.gradle` used for release publishing are changed from `org.openpolicyagent.opa` and `openapi` to `org.openpolicyagent.opa` and `opa` respectively.
+* The group and artifact IDs in `build.gradle` used for release publishing are changed from `io.github.open_policy_agent.opa` and `openapi` to `io.github.open_policy_agent.opa` and `opa` respectively.
 * `./gradlew fixGradleLint` to prevent the Gradle linter from complaining later about any unused dependencies added.
 
 `post-generate-hook.sh`, and everything it calls, is designed to be idempotent, so you may run it as many times as you wish without any adverse effects.

@@ -23,11 +23,11 @@ Execute the default decision  given an input
 ```java
 package hello.world;
 
-import org.openpolicyagent.opa.openapi.OpaApiClient;
-import org.openpolicyagent.opa.openapi.models.errors.ClientError;
-import org.openpolicyagent.opa.openapi.models.errors.ServerError;
-import org.openpolicyagent.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
-import org.openpolicyagent.opa.openapi.models.shared.Input;
+import io.github.open_policy_agent.opa.openapi.OpaApiClient;
+import io.github.open_policy_agent.opa.openapi.models.errors.ClientError;
+import io.github.open_policy_agent.opa.openapi.models.errors.ServerError;
+import io.github.open_policy_agent.opa.openapi.models.operations.ExecuteDefaultPolicyWithInputResponse;
+import io.github.open_policy_agent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -77,11 +77,11 @@ Execute a policy
 ```java
 package hello.world;
 
-import org.openpolicyagent.opa.openapi.OpaApiClient;
-import org.openpolicyagent.opa.openapi.models.errors.ClientError;
-import org.openpolicyagent.opa.openapi.models.errors.ServerError;
-import org.openpolicyagent.opa.openapi.models.operations.ExecutePolicyRequest;
-import org.openpolicyagent.opa.openapi.models.operations.ExecutePolicyResponse;
+import io.github.open_policy_agent.opa.openapi.OpaApiClient;
+import io.github.open_policy_agent.opa.openapi.models.errors.ClientError;
+import io.github.open_policy_agent.opa.openapi.models.errors.ServerError;
+import io.github.open_policy_agent.opa.openapi.models.operations.ExecutePolicyRequest;
+import io.github.open_policy_agent.opa.openapi.models.operations.ExecutePolicyResponse;
 import java.lang.Exception;
 
 public class Application {
@@ -133,11 +133,11 @@ Execute a policy given an input
 ```java
 package hello.world;
 
-import org.openpolicyagent.opa.openapi.OpaApiClient;
-import org.openpolicyagent.opa.openapi.models.errors.ClientError;
-import org.openpolicyagent.opa.openapi.models.errors.ServerError;
-import org.openpolicyagent.opa.openapi.models.operations.*;
-import org.openpolicyagent.opa.openapi.models.shared.Input;
+import io.github.open_policy_agent.opa.openapi.OpaApiClient;
+import io.github.open_policy_agent.opa.openapi.models.errors.ClientError;
+import io.github.open_policy_agent.opa.openapi.models.errors.ServerError;
+import io.github.open_policy_agent.opa.openapi.models.operations.*;
+import io.github.open_policy_agent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 
 public class Application {
@@ -192,11 +192,11 @@ Execute a policy given a batch of inputs
 ```java
 package hello.world;
 
-import org.openpolicyagent.opa.openapi.OpaApiClient;
-import org.openpolicyagent.opa.openapi.models.errors.BatchServerError;
-import org.openpolicyagent.opa.openapi.models.errors.ClientError;
-import org.openpolicyagent.opa.openapi.models.operations.*;
-import org.openpolicyagent.opa.openapi.models.shared.Input;
+import io.github.open_policy_agent.opa.openapi.OpaApiClient;
+import io.github.open_policy_agent.opa.openapi.models.errors.BatchServerError;
+import io.github.open_policy_agent.opa.openapi.models.errors.ClientError;
+import io.github.open_policy_agent.opa.openapi.models.operations.*;
+import io.github.open_policy_agent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 import java.util.Map;
 
@@ -253,11 +253,11 @@ Partially evaluate a query
 ```java
 package hello.world;
 
-import org.openpolicyagent.opa.openapi.OpaApiClient;
-import org.openpolicyagent.opa.openapi.models.errors.ClientError;
-import org.openpolicyagent.opa.openapi.models.errors.ServerError;
-import org.openpolicyagent.opa.openapi.models.operations.*;
-import org.openpolicyagent.opa.openapi.models.shared.Input;
+import io.github.open_policy_agent.opa.openapi.OpaApiClient;
+import io.github.open_policy_agent.opa.openapi.models.errors.ClientError;
+import io.github.open_policy_agent.opa.openapi.models.errors.ServerError;
+import io.github.open_policy_agent.opa.openapi.models.operations.*;
+import io.github.open_policy_agent.opa.openapi.models.shared.Input;
 import java.lang.Exception;
 import java.util.List;
 
@@ -313,9 +313,9 @@ The health API endpoint executes a simple built-in policy query to verify that t
 ```java
 package hello.world;
 
-import org.openpolicyagent.opa.openapi.OpaApiClient;
-import org.openpolicyagent.opa.openapi.models.errors.UnhealthyServer;
-import org.openpolicyagent.opa.openapi.models.operations.HealthResponse;
+import io.github.open_policy_agent.opa.openapi.OpaApiClient;
+import io.github.open_policy_agent.opa.openapi.models.errors.UnhealthyServer;
+import io.github.open_policy_agent.opa.openapi.models.operations.HealthResponse;
 import java.lang.Exception;
 
 public class Application {
