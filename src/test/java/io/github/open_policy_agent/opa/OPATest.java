@@ -1,12 +1,12 @@
 package io.github.open_policy_agent.opa;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import io.github.open_policy_agent.opa.openapi.utils.HTTPClient;
 import io.github.open_policy_agent.opa.utils.OPAHTTPClient;
 import io.github.open_policy_agent.opa.utils.OPALatencyMeasuringHTTPClient;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
