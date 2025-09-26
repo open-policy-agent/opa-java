@@ -37,7 +37,7 @@ java:
   defaultErrorName: SDKError
   flattenGlobalSecurity: false
   githubURL: github.com/open-policy-agent/opa-java
-  groupID: io.github.open-policy-agent.opa
+  groupID: io.github.open-policy-agent
   imports:
     option: openapi
     paths:

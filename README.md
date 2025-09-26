@@ -1,7 +1,7 @@
 # OPA Java SDK
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Maven Central Version](https://img.shields.io/maven-central/v/io.github.open_policy_agent.opa/opa?label=Maven%20Central&logo=apache-maven&color=%2324b6e0)](https://central.sonatype.com/artifact/io.github.open_policy_agent.opa/opa)
+[![Maven Central Version](https://img.shields.io/maven-central/v/io.github.open_policy_agent/opa?label=Maven%20Central&logo=apache-maven&color=%2324b6e0)](https://central.sonatype.com/artifact/io.github.open_policy_agent/opa)
 
 > [!IMPORTANT]
 > The documentation for this SDK lives at [`docs/`](https://github.com/open-policy-agent/opa-java/tree/main/docs), with reference documentation available at https://open-policy-agent.github.io/opa-java/javadoc, and development documentation at https://open-policy-agent.github.io/opa-java/
@@ -10,7 +10,7 @@ You can use the OPA Java SDK to connect to [Open Policy Agent](https://www.openp
 
 ## SDK Installation
 
-This package is published on Maven Central as [`io.github.open_policy_agent.opa/opa`](https://central.sonatype.com/artifact/io.github.open_policy_agent.opa/opa/overview). The Maven Central page includes up-to-date instructions to add it as a dependency to your Java project, tailored for a variety of build systems including Maven and Gradle.
+This package is published on Maven Central as [`io.github.open_policy_agent/opa`](https://central.sonatype.com/artifact/io.github.open_policy_agent/opa/overview). The Maven Central page includes up-to-date instructions to add it as a dependency to your Java project, tailored for a variety of build systems including Maven and Gradle.
 
 If you wish to build from source and publish the SDK artifact to your local Maven repository (on your filesystem) then use the following command (after cloning the git repo locally):
 
