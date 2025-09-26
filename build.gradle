@@ -49,7 +49,7 @@ jar {
     dependsOn(":generatePomFileForMavenPublication")
     archiveBaseName = "${artifactId}"
 
-    into("META-INF/maven/org.openpolicyagent.opa/opa") {
+    into("META-INF/maven/io.github.open-policy-agent.opa/opa") {
         from("$buildDir/pom.xml")
     }
 }
@@ -104,7 +104,7 @@ publishing {
         maven(MavenPublication) {
             // note that properties can't yet be used below!
             // https://github.com/gradle/gradle/issues/18619
-            groupId = "org.openpolicyagent.opa"
+            groupId = "io.github.open-policy-agent.opa"
             artifactId = "opa"
             version = "2.1.1"
 

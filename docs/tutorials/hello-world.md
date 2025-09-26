@@ -44,8 +44,8 @@ Next, modify the Java code to utilize the OPA Java SDK in `app/src/main/java/org
  */
 package org.example;
 
-import org.openpolicyagent.opa.OPAClient;
-import org.openpolicyagent.opa.OPAException;
+import io.github.open_policy_agent.opa.OPAClient;
+import io.github.open_policy_agent.opa.OPAException;
 
 import java.util.Map;
 import java.util.List;
@@ -92,7 +92,7 @@ public class App {
 The `app/build.gradle` file must also be updated to pull in the OPA-Java SDK. Under the `dependencies` section, add the following:
 
 ```gradle
-    implementation group: 'org.openpolicyagent.opa', name: 'opa', version: '+'
+    implementation group: 'io.github.open_policy_agent.opa', name: 'opa', version: '+'
 ```
 
 > [!WARNING]
@@ -179,8 +179,8 @@ The project is now prepared for experimenting with the OPA Java SDK locally. Try
  */
 package org.example;
 
-import org.openpolicyagent.opa.OPAClient;
-import org.openpolicyagent.opa.OPAException;
+import io.github.open_policy_agent.opa.OPAClient;
+import io.github.open_policy_agent.opa.OPAException;
 
 import java.util.Map;
 import java.util.List;
