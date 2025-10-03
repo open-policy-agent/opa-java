@@ -1,11 +1,6 @@
 name: Publish Release
 "on":
   workflow_dispatch:
-    inputs:
-      force:
-        description: Force publish
-        type: boolean
-        default: false
   push:
     tags:
       - "*"
