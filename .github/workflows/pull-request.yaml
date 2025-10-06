@@ -66,7 +66,7 @@ jobs:
           echo "| --- | --- |"                                                                                       >> "$COMMENT"
           echo "| Commit matching \`^Release .*\` | $COMMIT_VERSION |"                                               >> "$COMMENT"
           echo "| \`CHANGELOG.md\` | $CHANGELOG_VERSION |"                                                           >> "$COMMENT"
-          echo "| \`gradle properties\` project version (from `gradle.properties`) | $GRADLE_VERSION |"              >> "$COMMENT"
+          echo "| \`gradle properties\` project version (from \`gradle.properties\`) | $GRADLE_VERSION |"            >> "$COMMENT"
 
           echo "Posting or updating release warning comment."
           export COMMENT_BODY="$(cat "$COMMENT")"
