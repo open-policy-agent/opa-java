@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Tune GitHub-hosted runner network
         uses: smorimoto/tune-github-hosted-runner-network@v1
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0  # Fetch full history to access all commits
       - name: Check for release commits
@@ -99,7 +99,7 @@ jobs:
   test_and_lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Pre-pull container image
         run: docker pull ghcr.io/open-policy-agent/eopa:latest
       - uses: gradle/gradle-build-action@v3
