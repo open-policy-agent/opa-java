@@ -3,20 +3,17 @@
  */
 package io.github.open_policy_agent.opa.openapi.utils;
 
-import java.io.IOException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.databind.ser.std.StdSerializer;
+
 import java.math.BigInteger;
 import java.util.Objects;
-
-import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 // Internal API only
 
@@ -63,7 +60,6 @@ public class BigIntegerString {
         return Objects.equals(value, other.value);
     }
     
-    @SuppressWarnings("serial")
     public static final class Serializer extends StdSerializer<BigIntegerString> {
 
         protected Serializer() {
@@ -71,13 +67,11 @@ public class BigIntegerString {
         }
 
         @Override
-        public void serialize(BigIntegerString value, JsonGenerator g, SerializerProvider provider)
-                throws IOException, JsonProcessingException {
+        public void serialize(BigIntegerString value, JsonGenerator g, SerializationContext ctxt) {
             g.writeString(value.value.toString());
         }
     }
 
-    @SuppressWarnings("serial")
     public static final class Deserializer extends StdDeserializer<BigIntegerString> {
 
         protected Deserializer() {
@@ -85,8 +79,7 @@ public class BigIntegerString {
         }
 
         @Override
-        public BigIntegerString deserialize(JsonParser p, DeserializationContext ctxt)
-                throws IOException, JacksonException {
+        public BigIntegerString deserialize(JsonParser p, DeserializationContext ctxt) {
             String s = p.readValueAs(String.class);
             return new BigIntegerString(new BigInteger(s));
         }

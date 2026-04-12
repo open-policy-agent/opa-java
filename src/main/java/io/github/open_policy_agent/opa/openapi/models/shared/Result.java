@@ -4,19 +4,19 @@
 package io.github.open_policy_agent.opa.openapi.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.github.open_policy_agent.opa.openapi.utils.OneOfDeserializer;
 import io.github.open_policy_agent.opa.openapi.utils.TypedObject;
 import io.github.open_policy_agent.opa.openapi.utils.Utils.JsonShape;
 import io.github.open_policy_agent.opa.openapi.utils.Utils.TypeReferenceWithShape;
 import io.github.open_policy_agent.opa.openapi.utils.Utils;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.annotation.JsonDeserialize;
+
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
-import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -103,7 +103,6 @@ public class Result {
         return Objects.hash(value.value());
     }
     
-    @SuppressWarnings("serial")
     public static final class _Deserializer extends OneOfDeserializer<Result> {
 
         public _Deserializer() {
