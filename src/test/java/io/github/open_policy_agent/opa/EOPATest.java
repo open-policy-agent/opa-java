@@ -2,10 +2,13 @@ package io.github.open_policy_agent.opa;
 
 import io.github.open_policy_agent.opa.utils.OPALatencyMeasuringHTTPClient;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AutoClose;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 import org.testcontainers.junit.jupiter.Container;
@@ -54,11 +57,15 @@ class EOPATest {
                 .withFileFromClasspath("Dockerfile", "eopa.Dockerfile")
                 .withFileFromClasspath("nginx.conf", "nginx.conf")
                 .withFileFromClasspath("entrypoint.sh", "entrypoint.sh"))
+        .withLogConsumer(new Slf4jLogConsumer(LoggerFactory.getLogger("eopa")))
         .withExposedPorts(opaPort, altPort)
         .waitingFor(Wait.forHttp("/health").forPort(opaPort))
         .withFileSystemBind("./testdata/simple", "/policy", BindMode.READ_ONLY)
         .withCommand("run -s -a 0.0.0.0:8181 --authentication=token --authorization=basic --bundle /policy");
     //CHECKSTYLE:ON
+
+    @AutoClose
+    HttpClient client = HttpClient.newHttpClient();
 
     @BeforeEach
     public void setUp() throws Exception {
@@ -89,7 +96,6 @@ class EOPATest {
         // This test just makes sure that we can reach the OPAClient health endpoint
         // and that it returns the expected {} value.
 
-        HttpClient client = HttpClient.newHttpClient();
         HttpRequest req = HttpRequest.newBuilder().uri(URI.create(eopaAddress + "/health")).build();
         HttpResponse<String> resp = null;
 
@@ -113,7 +119,6 @@ class EOPATest {
         // API on the "alternate", reverse-proxy based OPA that has a URL
         // prefix.
 
-        HttpClient client = HttpClient.newHttpClient();
         HttpRequest req = HttpRequest.newBuilder().uri(URI.create(eopaAltAddress + "/health")).build();
         HttpResponse<String> resp = null;
 

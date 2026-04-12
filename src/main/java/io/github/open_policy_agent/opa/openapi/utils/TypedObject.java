@@ -53,7 +53,7 @@ public class TypedObject {
         @Override
         public void serialize(TypedObject value, JsonGenerator gen, SerializationContext ctxt) {
             Object o = Utils.convertToShape(value.value(),value.shape(), value.typeReference());
-            ctxt.findValueSerializer(o.getClass()).serialize(o, gen, ctxt);
+            ctxt.findPrimaryPropertySerializer(o.getClass(), null).serialize(o, gen, ctxt);
         }
 
     }

@@ -6,8 +6,10 @@ import io.github.open_policy_agent.opa.utils.OPALatencyMeasuringHTTPClient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 import org.testcontainers.junit.jupiter.Container;
@@ -69,6 +71,7 @@ class OPATest {
                 .withFileFromClasspath("nginx.conf", "nginx.conf")
                 .withFileFromClasspath("entrypoint.sh", "entrypoint.sh")
         )
+        .withLogConsumer(new Slf4jLogConsumer(LoggerFactory.getLogger("opa")))
         .withExposedPorts(opaPort, altPort)
         .waitingFor(Wait.forHttp("/health").forPort(opaPort))
         .withFileSystemBind("./testdata/simple", "/policy", BindMode.READ_ONLY)
