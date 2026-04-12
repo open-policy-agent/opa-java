@@ -1,8 +1,5 @@
 package io.github.open_policy_agent.opa;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.open_policy_agent.opa.openapi.OpaApiClient;
 import io.github.open_policy_agent.opa.openapi.models.errors.SDKError;
 import io.github.open_policy_agent.opa.openapi.models.errors.ServerError;
@@ -31,6 +28,9 @@ import io.github.open_policy_agent.opa.openapi.models.shared.SuccessfulPolicyRes
 import io.github.open_policy_agent.opa.openapi.models.shared.SuccessfulPolicyResponseWithStatusCode;
 import io.github.open_policy_agent.opa.openapi.utils.HTTPClient;
 import io.github.open_policy_agent.opa.utils.OPAHTTPClient;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,6 +1,5 @@
 package io.github.open_policy_agent.opa;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import io.github.open_policy_agent.opa.openapi.utils.HTTPClient;
 import io.github.open_policy_agent.opa.utils.OPAHTTPClient;
 import io.github.open_policy_agent.opa.utils.OPALatencyMeasuringHTTPClient;
@@ -13,6 +12,7 @@ import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import tools.jackson.core.type.TypeReference;
 
 import java.lang.reflect.Field;
 import java.net.URI;

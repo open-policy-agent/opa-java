@@ -16,8 +16,7 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 import org.openapitools.jackson.nullable.JsonNullable;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
 public final class RequestBody {
     private static final Map<String, String> SERIALIZATION_METHOD_TO_CONTENT_TYPE = Map.of("json", "application/json",

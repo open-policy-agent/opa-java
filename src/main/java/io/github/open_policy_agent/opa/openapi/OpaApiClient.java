@@ -3,7 +3,6 @@
  */
 package io.github.open_policy_agent.opa.openapi;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import io.github.open_policy_agent.opa.openapi.models.errors.BatchServerError;
 import io.github.open_policy_agent.opa.openapi.models.errors.ClientError;
 import io.github.open_policy_agent.opa.openapi.models.errors.SDKError;
@@ -49,6 +48,8 @@ import io.github.open_policy_agent.opa.openapi.utils.SerializedBody;
 import io.github.open_policy_agent.opa.openapi.utils.SpeakeasyHTTPClient;
 import io.github.open_policy_agent.opa.openapi.utils.Utils.JsonShape;
 import io.github.open_policy_agent.opa.openapi.utils.Utils;
+import tools.jackson.core.type.TypeReference;
+
 import java.io.InputStream;
 import java.lang.Boolean;
 import java.lang.Exception;

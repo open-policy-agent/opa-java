@@ -3,7 +3,6 @@
  */
 package io.github.open_policy_agent.opa.openapi.utils;
 
-import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
@@ -17,24 +16,19 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import io.github.open_policy_agent.opa.openapi.utils.Utils.TypeReferenceWithShape;
-
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.TreeNode;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DatabindException;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.TreeNode;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DatabindException;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.deser.std.StdDeserializer;
+import tools.jackson.databind.exc.JsonNodeException;
 
 public class OneOfDeserializer<T> extends StdDeserializer<T> {
 
-    private static final long serialVersionUID = -1;
-
-    private final transient List<TypeReferenceWithShape> typeReferences; // oneOf subschemas 
+    private final transient List<TypeReferenceWithShape> typeReferences; // oneOf subschemas
     private final Class<T> cls;
     private final boolean strict;
     private final ObjectMapper mapper;
@@ -60,13 +54,13 @@ public class OneOfDeserializer<T> extends StdDeserializer<T> {
     }
 
     @Override
-    public T deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    public T deserialize(JsonParser p, DeserializationContext ctxt) {
         return deserializeOneOf(mapper, p, ctxt, typeReferences, cls, strict);
     }
 
     private static <T> T deserializeOneOf(ObjectMapper mapper, JsonParser p, DeserializationContext ctxt,
-            List<TypeReferenceWithShape> typeReferences, Class<T> cls, boolean strict) throws IOException {
-        TreeNode tree = p.getCodec().readTree(p);
+            List<TypeReferenceWithShape> typeReferences, Class<T> cls, boolean strict) {
+        TreeNode tree = p.readValueAsTree();
         // TODO don't have to generate json because can use tree.traverse to get a
         // parser to read value, perf advantage and can stop plugging in ObjectMapper
         String json = mapper.writeValueAsString(tree);
@@ -74,7 +68,7 @@ public class OneOfDeserializer<T> extends StdDeserializer<T> {
     }
 
     private static <T> T deserializeOneOf(ObjectMapper mapper, String json, List<TypeReferenceWithShape> typeReferences, Class<T> cls,
-            DeserializationContext ctxt, boolean strict) throws JsonProcessingException {
+            DeserializationContext ctxt, boolean strict) {
         List<Match<T>> matches = new ArrayList<>();
         for (TypeReferenceWithShape c : typeReferences) {
             // try to deserialize with each of the member classes
@@ -98,7 +92,7 @@ public class OneOfDeserializer<T> extends StdDeserializer<T> {
             return matches.get(0).value;
         } else if (matches.size() > 1) {
             if (strict) {
-                throw JsonMappingException.from(ctxt,
+                throw JsonNodeException.from(ctxt,
                         "json matched more than one of the possible type references, matches are: " 
                         + typeNames(matches) + " - json=\n" + json);
             } else {
@@ -106,7 +100,7 @@ public class OneOfDeserializer<T> extends StdDeserializer<T> {
                 return matches.get(0).value;
             }
         } else {
-            throw JsonMappingException.from(ctxt,
+            throw JsonNodeException.from(ctxt,
                 "json did not match any of the possible type references: " + typeReferenceNames(typeReferences) + ", json=\n" + json);
         }
     }

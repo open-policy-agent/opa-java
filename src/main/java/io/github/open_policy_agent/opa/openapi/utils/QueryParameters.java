@@ -3,15 +3,14 @@
  */
 package io.github.open_policy_agent.opa.openapi.utils;
 
+import tools.jackson.databind.ObjectMapper;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class QueryParameters {
     public static <T extends Object> List<QueryParameter> parseQueryParams(Class<T> type, T queryParams,
@@ -66,8 +65,7 @@ public class QueryParameters {
         return allParams;
     }
 
-    private static List<QueryParameter> parseSerializedParams(QueryParamsMetadata queryParamsMetadata, Object value)
-            throws JsonProcessingException {
+    private static List<QueryParameter> parseSerializedParams(QueryParamsMetadata queryParamsMetadata, Object value) {
         List<QueryParameter> params = new ArrayList<>();
         switch (queryParamsMetadata.serialization) {
             case "json":
