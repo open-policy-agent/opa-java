@@ -1,4 +1,4 @@
-# OPA Java SDK
+# OPA Java HTTP Client SDK
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.open-policy-agent/opa?label=Maven%20Central&logo=apache-maven&color=%2324b6e0)](https://central.sonatype.com/artifact/io.github.open-policy-agent/opa)
@@ -6,7 +6,7 @@
 > [!IMPORTANT]
 > The documentation for this SDK lives at [`docs/`](https://github.com/open-policy-agent/opa-java/tree/main/docs), with reference documentation available at https://open-policy-agent.github.io/opa-java/javadoc, and development documentation at https://open-policy-agent.github.io/opa-java/
 
-You can use the OPA Java SDK to connect to [Open Policy Agent](https://www.openpolicyagent.org/) and [EOPA](https://github.com/open-policy-agent/eopa) deployments.
+This is a Java **HTTP client** for [Open Policy Agent](https://www.openpolicyagent.org/) and [EOPA](https://github.com/open-policy-agent/eopa). It calls a running OPA/EOPA server over its REST API to evaluate policies — it does **not** embed the policy engine in your JVM. If you need to evaluate Rego policies in-process (e.g. via WebAssembly, with no network hop), see [`open-policy-agent/java-opa-sdk`](https://github.com/open-policy-agent/java-opa-sdk) instead.
 
 ## SDK Installation
 
@@ -80,7 +80,7 @@ public class App {
 
 <!-- No SDK Installation [installation] -->
 
-# OPA OpenApi SDK (low-level)
+# OPA OpenAPI HTTP Client (low-level)
 
 <!-- Start Summary [summary] -->
 ## Summary
@@ -91,10 +91,10 @@ For more information about the API: [EOPA documentation](https://github.com/open
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [OPA Java SDK](#opa-java-sdk)
+* [OPA Java HTTP Client SDK](#opa-java-http-client-sdk)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage (high-level)](#sdk-example-usage-high-level)
-* [OPA OpenApi SDK (low-level)](#opa-openapi-sdk-low-level)
+* [OPA OpenAPI HTTP Client (low-level)](#opa-openapi-http-client-low-level)
   * [SDK Example Usage](#sdk-example-usage)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Server Selection](#server-selection)
