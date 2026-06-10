@@ -6,7 +6,7 @@
 > [!IMPORTANT]
 > The documentation for this SDK lives at [`docs/`](https://github.com/open-policy-agent/opa-java/tree/main/docs), with reference documentation available at https://open-policy-agent.github.io/opa-java/javadoc, and development documentation at https://open-policy-agent.github.io/opa-java/
 
-This is a Java **HTTP client** for [Open Policy Agent](https://www.openpolicyagent.org/) and [EOPA](https://github.com/open-policy-agent/eopa). It calls a running OPA/EOPA server over its REST API to evaluate policies — it does **not** embed the policy engine in your JVM. If you need to evaluate Rego policies in-process (e.g. via WebAssembly, with no network hop), see [`open-policy-agent/java-opa-sdk`](https://github.com/open-policy-agent/java-opa-sdk) instead.
+This is a Java **HTTP client** for [Open Policy Agent](https://www.openpolicyagent.org/) and [EOPA](https://github.com/open-policy-agent/eopa). It calls a running OPA/EOPA server over its REST API to evaluate policies — it does **not** embed the policy engine in your JVM. If you need to evaluate Rego policies in-process, see [`open-policy-agent/java-opa-sdk`](https://github.com/open-policy-agent/java-opa-sdk) or [`Wasm`](https://www.openpolicyagent.org/docs/wasm) instead.
 
 ## SDK Installation
 
