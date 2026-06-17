@@ -12,5 +12,5 @@ RUN chmod +x /entrypoint.sh
 # modified.
 COPY --from=ghcr.io/open-policy-agent/eopa:latest /ko-app/eopa /usr/bin/opa
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["sh", "/entrypoint.sh"]
 

@@ -4,13 +4,14 @@
 package io.github.open_policy_agent.opa.openapi.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.github.open_policy_agent.opa.openapi.utils.OneOfDeserializer;
 import io.github.open_policy_agent.opa.openapi.utils.TypedObject;
 import io.github.open_policy_agent.opa.openapi.utils.Utils.JsonShape;
 import io.github.open_policy_agent.opa.openapi.utils.Utils.TypeReferenceWithShape;
 import io.github.open_policy_agent.opa.openapi.utils.Utils;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.annotation.JsonDeserialize;
+
 import java.lang.Override;
 import java.lang.String;
 import java.lang.SuppressWarnings;

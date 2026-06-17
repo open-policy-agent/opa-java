@@ -5,13 +5,14 @@ package io.github.open_policy_agent.opa.openapi.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.type.TypeReference;
 import io.github.open_policy_agent.opa.openapi.models.shared.Explain;
 import io.github.open_policy_agent.opa.openapi.models.shared.GzipAcceptEncoding;
 import io.github.open_policy_agent.opa.openapi.models.shared.GzipContentEncoding;
 import io.github.open_policy_agent.opa.openapi.utils.LazySingletonValue;
 import io.github.open_policy_agent.opa.openapi.utils.SpeakeasyMetadata;
 import io.github.open_policy_agent.opa.openapi.utils.Utils;
+import tools.jackson.core.type.TypeReference;
+
 import java.lang.Boolean;
 import java.lang.Override;
 import java.lang.String;

@@ -3,7 +3,7 @@
  */
 package io.github.open_policy_agent.opa.openapi.utils;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import tools.jackson.core.type.TypeReference;
 
 public final class LazySingletonValue<T> {
     

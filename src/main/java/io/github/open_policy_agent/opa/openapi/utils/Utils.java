@@ -55,16 +55,15 @@ import javax.net.ssl.SSLSession;
 
 import org.apache.commons.io.IOUtils;
 import org.openapitools.jackson.nullable.JsonNullable;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.IntNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.TextNode;
-import com.fasterxml.jackson.databind.type.TypeFactory;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.JavaType;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.node.IntNode;
+import tools.jackson.databind.node.ObjectNode;
+import tools.jackson.databind.node.StringNode;
+import tools.jackson.databind.type.TypeFactory;
 
 public final class Utils {
     
@@ -89,7 +88,7 @@ public final class Utils {
     }
     
     public static <T> String generateURL(Class<T> type, String baseURL, String path, JsonNullable<? extends T> params,
-            Map<String, Map<String, Map<String, Object>>> globals) throws JsonProcessingException, IllegalArgumentException, IllegalAccessException {
+            Map<String, Map<String, Map<String, Object>>> globals) throws JacksonException, IllegalArgumentException, IllegalAccessException {
         if (params.isPresent() && params.get() != null) {
             return generateURL(type, baseURL, path, params.get(), globals);
         } else {
@@ -98,7 +97,7 @@ public final class Utils {
     }
     
     public static <T> String generateURL(Class<T> type, String baseURL, String path, Optional<? extends T> params,
-            Map<String, Map<String, Map<String, Object>>> globals) throws JsonProcessingException, IllegalArgumentException, IllegalAccessException {
+            Map<String, Map<String, Map<String, Object>>> globals) throws JacksonException, IllegalArgumentException, IllegalAccessException {
         if (params.isPresent()) {
             return generateURL(type, baseURL, path, params.get(), globals);
         } else {
@@ -108,7 +107,7 @@ public final class Utils {
 
     public static <T> String generateURL(Class<T> type, String baseURL, String path, T params,
             Map<String, Map<String, Map<String, Object>>> globals)
-            throws IllegalArgumentException, IllegalAccessException, JsonProcessingException {
+            throws IllegalArgumentException, IllegalAccessException, JacksonException {
         if (baseURL != null && baseURL.endsWith("/")) {
             baseURL = baseURL.substring(0, baseURL.length() - 1);
         }
@@ -481,8 +480,7 @@ public final class Utils {
         return value;
     }
 
-    private static Map<String, String> parseSerializedParams(PathParamsMetadata pathParamsMetadata, Object value)
-            throws JsonProcessingException {
+    private static Map<String, String> parseSerializedParams(PathParamsMetadata pathParamsMetadata, Object value) {
         Map<String, String> params = new HashMap<>();
         switch (pathParamsMetadata.serialization) {
             case "json":
@@ -561,12 +559,12 @@ public final class Utils {
     public static <T> T readDefaultOrConstValue(String name, String json, TypeReference<T> typeReference) {
         try {
             return readValue(json, typeReference);
-        } catch (JsonProcessingException e) {
+        } catch (JacksonException e) {
             throw new IllegalArgumentException("default/const value did not match the expected type, name=" + name + ",json=\n" + json, e); 
         }
     }
     
-    private static <T> T readValue(String json, TypeReference<T> typeReference) throws JsonProcessingException {
+    private static <T> T readValue(String json, TypeReference<T> typeReference) throws JacksonException {
         return JSON.getMapper().readValue(json, typeReference);
     }
     
@@ -925,28 +923,24 @@ public final class Utils {
     
     public static <T> T asType(EventStreamMessage x, ObjectMapper mapper, TypeReference<T> typeReference) {
         try {
-            try {
-                String json = json(x, mapper, false);
-                return mapper.readValue(json, typeReference);
-            } catch (JsonProcessingException e) {
-                // retry with the assumption that data field is plain text
-                String json = json(x, mapper, true);
-                return mapper.readValue(json, typeReference);
-            }
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            String json = json(x, mapper, false);
+            return mapper.readValue(json, typeReference);
+        } catch (JacksonException e) {
+            // retry with the assumption that data field is plain text
+            String json = json(x, mapper, true);
+            return mapper.readValue(json, typeReference);
         }
     }
 
     public static String json(EventStreamMessage m, ObjectMapper mapper, boolean dataIsPlainText)
-            throws JsonProcessingException {
+            throws JacksonException {
         ObjectNode node = mapper.createObjectNode();
-        m.event().ifPresent(value -> node.set("event", new TextNode(value)));
-        m.id().ifPresent(value -> node.set("id", new TextNode(value)));
+        m.event().ifPresent(value -> node.set("event", new StringNode(value)));
+        m.id().ifPresent(value -> node.set("id", new StringNode(value)));
         m.retryMs().ifPresent(value -> node.set("retry", new IntNode(value)));
         // data is always present (but may be an empty string)
         if (dataIsPlainText || m.data().trim().isEmpty()) {
-            node.set("data", new TextNode(m.data()));
+            node.set("data", new StringNode(m.data()));
         } else {
             JsonNode tree = mapper.readTree(m.data());
             node.set("data", tree);
@@ -1330,22 +1324,18 @@ public final class Utils {
     public static String sortJSONObjectKeys(String json, String... fields) {
         var fieldList = List.of(fields);
         var m = new ObjectMapper();
-        try {
-            JsonNode tree = m.readTree(json);
-            if (!tree.isObject()) {
-                return json;
-            } else if (fieldList.isEmpty()) {
-                return m.writeValueAsString(sortKeys(m, tree));
-            } else {
-                var node = (ObjectNode) tree;
-                var list = toList(node.fields());
-                list.stream() //
-                        .filter(entry -> fieldList.contains(entry.getKey())) //
-                        .forEach(entry -> node.set(entry.getKey(), sortKeys(m, entry.getValue())));
-                return m.writeValueAsString(node);
-            }
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+        JsonNode tree = m.readTree(json);
+        if (!tree.isObject()) {
+            return json;
+        } else if (fieldList.isEmpty()) {
+            return m.writeValueAsString(sortKeys(m, tree));
+        } else {
+            var node = (ObjectNode) tree;
+            var list = List.copyOf(node.properties());
+            list.stream() //
+                    .filter(entry -> fieldList.contains(entry.getKey())) //
+                    .forEach(entry -> node.set(entry.getKey(), sortKeys(m, entry.getValue())));
+            return m.writeValueAsString(node);
         }
     }
 
@@ -1353,20 +1343,12 @@ public final class Utils {
         if (!node.isObject()) {
             return node;
         } else {
-            var list = toList(node.fields());
-            list.sort((a, b) -> a.getKey().compareTo(b.getKey()));
+            var list = List.copyOf(node.properties());
+            list.sort(Entry.comparingByKey());
             var map = new LinkedHashMap<String, JsonNode>();
             list.forEach(x -> map.put(x.getKey(), x.getValue()));
             return new ObjectNode(m.getNodeFactory(), map);
         }
-    }
-
-    private static <T> List<T> toList(Iterator<T> it) {
-        var list = new ArrayList<T>();
-        while (it.hasNext()) {
-            list.add(it.next());
-        }
-        return list;
     }
 
     public static <T> T valueOrElse(T value, T valueIfNotPresent) {
